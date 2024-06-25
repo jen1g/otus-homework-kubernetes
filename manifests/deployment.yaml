@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+  labels:
+    app: test-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-deployment
+  template:
+    metadata:
+      labels:
+        app: test-deployment
+    spec:
+      containers:
+        - image: jen1g/health-app:v1.0
+          name: health-app
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          imagePullPolicy: Always 
